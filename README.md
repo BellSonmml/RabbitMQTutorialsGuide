@@ -17,8 +17,8 @@ RabbitMQ作用概括：应用接口，异步处理，流量削峰，消息通讯
 ##### 1.Helloworld
 简单收发没有持久化 没有消息队列共享。
 
-##### 2.WorkQueues(在消费者中通过channel.basicQos(1))来开启
-队列共享：已有任务的消费者不再接受消息
+##### 2.WorkQueues
+队列共享：已有任务的消费者不再接受消息(在消费者中通过channel.basicQos(1))来开启
 </br>可持久化：生产者绑定队列时，生产者发布消息时声明消息和队列都是持久的。
 
 ##### 3.Publish/Subscribe
