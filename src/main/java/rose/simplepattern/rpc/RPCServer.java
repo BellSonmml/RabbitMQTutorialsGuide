@@ -45,10 +45,12 @@ public class RPCServer implements Runnable {
                     String correlationId = properties.getCorrelationId();
                     log.info("{} received message for input:{},correlationId:{},fibonacci:{}", serverName, input, correlationId, fib);
                     String replyTo = properties.getReplyTo();
+                    //消费者处理消息之后，回传消息到回调队列，回调队列名称是消息携带的
                     channel.basicPublish("", replyTo, properties, String.valueOf(fib).getBytes(StandardCharsets.UTF_8));
                     channel.basicAck(envelope.getDeliveryTag(), false);
                 }
             };
+            //消费者不做消息的确认
             channel.basicConsume(queueName, false, consumer);
         } catch (IOException e) {
             log.error("rpc server process happen error:{}", e.getLocalizedMessage());

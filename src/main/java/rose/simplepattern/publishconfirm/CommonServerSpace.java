@@ -1,4 +1,4 @@
-package rose.simplepattern.confirm;
+package rose.simplepattern.publishconfirm;
 
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -9,6 +9,7 @@ import java.util.concurrent.TimeoutException;
 public class CommonServerSpace {
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
+        factory.setHost("localhost");
         Connection connection = factory.newConnection();
         CommonServer server0 = new CommonServer("queue_confirm","server0",connection);
         CommonServer server1 = new CommonServer("queue_confirm","server1",connection);

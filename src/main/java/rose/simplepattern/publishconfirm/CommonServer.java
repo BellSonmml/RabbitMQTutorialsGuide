@@ -1,4 +1,4 @@
-package rose.simplepattern.confirm;
+package rose.simplepattern.publishconfirm;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -32,8 +32,10 @@ public class CommonServer implements Runnable {
             DeliverCallback deliverCallback = (consumerTag, delivery) -> {
                 String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
                 log.info("{} received message:{}",serverName,message);
+                channel.basicAck(delivery.getEnvelope().getDeliveryTag(),false);
             };
-            channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
+            //消费者自动确认
+            channel.basicConsume(queueName, false, deliverCallback, consumerTag -> {
             });
         } catch (IOException e) {
             log.error("happen error:{}",e.getLocalizedMessage());

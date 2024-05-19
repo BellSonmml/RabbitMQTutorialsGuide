@@ -12,6 +12,7 @@ public class DirectReceiveLogSpace {
         ConnectionFactory factory = new ConnectionFactory();
         Connection consumerConnection = factory.newConnection();
 
+        //路由键和绑定键完全匹配队列才能接收到消息
         DirectReceiveLog receiveLog0 = DirectReceiveLog.builder().connection(consumerConnection)
                 .exchangeName("direct_log")
                 .exchangeType("direct")

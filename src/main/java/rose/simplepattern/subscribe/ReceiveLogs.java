@@ -28,6 +28,9 @@ public class ReceiveLogs implements Runnable {
         try {
             Channel channel = connection.createChannel();
 
+            //如果队列没有显式的绑定任何交换机，那么就会默认绑定一个名称为“”空字符，类型为redirect的交换机
+            //binding的bindingkey默认是队列名称，所以bindingkey是“”
+            //binding是交换机和队列之间的关联关系，指明了从交换机路由到队列的规则，通过routingkey和bindingkey的匹配关系决定消息路由到哪个队列。
             channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
             String queueName = channel.queueDeclare().getQueue();
             channel.queueBind(queueName, EXCHANGE_NAME, "");

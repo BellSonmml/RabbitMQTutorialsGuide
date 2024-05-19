@@ -1,7 +1,6 @@
-package rose.simplepattern.confirm;
+package rose.simplepattern.publishconfirm;
 
 import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,6 +26,7 @@ public class IndividualClient {
 
 
     public void publishMessage(String message) throws IOException, InterruptedException, TimeoutException {
+        //发送一个消息就开始等待消息确认
         channel.basicPublish(exchangeName,queueName,null,message.getBytes(StandardCharsets.UTF_8));
         channel.waitForConfirmsOrDie(5000);
     }

@@ -1,4 +1,4 @@
-package rose.simplepattern.confirm;
+package rose.simplepattern.publishconfirm;
 
 import com.rabbitmq.client.Channel;
 import lombok.AllArgsConstructor;
@@ -27,6 +27,7 @@ public class BatchClient {
 
 
     public void publishMessage(String message) throws IOException, InterruptedException, TimeoutException {
+        //生产者发布的消息到达指定数量之后开始批量确认（<=currentTag acknowledgement）
         if (count >= batchSize) {
             log.info("research {} begin waiting confirm",count);
             channel.waitForConfirmsOrDie(5000);

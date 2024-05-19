@@ -53,3 +53,6 @@ RabbitMQ作用概括：应用接口，异步处理，流量削峰，消息通讯
 ### 为了便于理解添加图示
 </br>
 <img width="647" alt="image" src="https://github.com/BellSonmml/RabbitMQTutorialsGuide/assets/80883227/c1dca056-f582-4d03-a402-06ce46dc6ecd">
+
+#### 补充知识点
+学习笔记请参考<a href="https://github.com/BellSonmml/RabbitMQTutorialsGuide/

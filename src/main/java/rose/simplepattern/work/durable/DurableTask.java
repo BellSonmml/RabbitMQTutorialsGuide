@@ -21,6 +21,7 @@ public class DurableTask {
                 message.append(".");
                 channel.basicPublish(""
                         , QUEUE_NAME
+                        //deliveryMode=2将消息设置为持久化
                         , MessageProperties.PERSISTENT_TEXT_PLAIN
                         , message.toString().getBytes(StandardCharsets.UTF_8));
                 Thread.sleep(1000);

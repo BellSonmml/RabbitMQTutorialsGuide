@@ -12,6 +12,8 @@ public class TopicReceiveSpace {
         factory.setHost("localhost");
         Connection connection = factory.newConnection();
 
+        //路由键和绑定键模式匹配队列就能接收到消息
+        //通配符有两种 * 代表一个字符  #代表0个或者多个字符 分别有x^+，x^*的含义。
         String exchangeName = "topic_log";
         String exchangeType = "topic";
         TopicReceiveLog work0 = TopicReceiveLog.builder()

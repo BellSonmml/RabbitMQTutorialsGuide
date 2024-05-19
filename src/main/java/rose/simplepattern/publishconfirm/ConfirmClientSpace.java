@@ -1,4 +1,4 @@
-package rose.simplepattern.confirm;
+package rose.simplepattern.publishconfirm;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -13,6 +13,7 @@ public class ConfirmClientSpace {
         Connection connection = factory.newConnection();
 
         long individualMillis = System.currentTimeMillis();
+        //开启发布确认
         Channel channel = connection.createChannel();
         channel.confirmSelect();
         IndividualClient individualClient = new IndividualClient(channel, "queue_confirm", "");

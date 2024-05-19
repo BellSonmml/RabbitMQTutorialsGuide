@@ -10,6 +10,7 @@ public class DirectEmitLogSpace {
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
         Connection connection = factory.newConnection();
+        //路由键和绑定键完全匹配队列才能接收到消息
         DirectEmitLog directEmitLog = new DirectEmitLog("direct_log", connection, "direct");
         directEmitLog.publishSeverityLevelMessage("error","this is error msg");
         directEmitLog.publishSeverityLevelMessage("info","this is info msg");

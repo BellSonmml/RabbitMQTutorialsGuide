@@ -11,6 +11,7 @@ public class TopicEmitSpace {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
         Connection connection = factory.newConnection();
+        //路由键和绑定键模式匹配队列就可以接收到消息
         TopicEmitLog topicEmitLog0 = new TopicEmitLog("topic_log", "topic", connection);
         TopicEmitLog topicEmitLog1 = new TopicEmitLog("topic_log", "topic", connection);
         topicEmitLog0.publishTwoElementMessage("kern.critical","message1");
