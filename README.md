@@ -71,3 +71,6 @@ RabbitMQ作用概括：应用接口，异步处理，流量削峰，消息通讯
 #### rabbitMQ持久化分类
 1、通道持久化定义队列的时候指明通道持久化，通道定义的matedata持久化至
   磁盘中即使服务器重启通道也不会丢失预防重启后发生通道或者队列不存在的情况
+![rabbitmq1](https://github.com/BellSonmml/RabbitMQTutorialsGuide/assets/80883227/e7496500-1537-428e-a107-7ad6350ecb22)
+
+  
